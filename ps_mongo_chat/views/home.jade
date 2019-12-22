@@ -1,0 +1,80 @@
+//head
+//   meta(charset='utf-8')
+//   title Demo Chat
+//   link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', rel='stylesheet')
+//   style.
+//     body {
+//     background-color: rgb(212, 219, 226);
+//     overflow-x: hidden;
+//     }
+//     #msg_form {
+//     position: absolute;
+//     margin-bottom: 0;
+//     bottom: 0;
+//     }
+//     h1 {
+//     text-align: center;
+//     }
+//   script(src='/socket.io/socket.io.js')
+//script(src='../client.js')
+//#wrap
+//   .row
+//     .col-md-12.panel
+//       h1 Messages
+//       h3(id='user_name') #{user.firstName}
+//   .row
+//     .col-md-12
+//       #messages
+//   #msg_form.row.well
+//     .col-md-12
+//       .input-group
+//           input#inp.form-control.input-lg(type='text', placeholder='Message... ')
+//           span.input-group-btn
+//             button#btn.btn.btn-lg.btn-success(type='button') Send!
+//
+//
+doctype html
+html(lang='en', xmlns='http://www.w3.org/1999/xhtml')
+    head
+        meta(charset='utf-8')
+        title MyChat
+        link(href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js')
+        style.
+            body {
+                background-color: rgb(212, 219, 226);
+                overflow-x: hidden;
+            }
+            #msg_form {
+                position: absolute;
+                margin-bottom: 0;
+                bottom: 0;
+            }
+            h2 {
+                text-align: center;
+            }
+
+            #messages {
+                overflow-y: scroll;
+            }
+
+        script(src='/socket.io/socket.io.js')
+        script(src='../client.js')
+    body
+        #wrap
+            .row
+                .col-md-12.panel
+                    h2 Messages
+                    h3(id='user_name')  #{user.firstName}
+
+            .row
+
+                .col-md-10
+                    #messages
+            #msg_form.row.well
+                .col-md-12
+                    .input-group
+                        input#inp.form-control.input-lg(type='text', placeholder='Message...')
+                        span.input-group-btn
+                            button#btn.btn.btn-lg.btn-success(type='button') Send!
+

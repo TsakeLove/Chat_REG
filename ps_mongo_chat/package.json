@@ -1,0 +1,45 @@
+{
+  "name": "passport-mongo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "test": "npm run lint",
+    "prettier": "prettier --config .prettierrc.json --write app.js",
+    "lint": "eslint app.js",
+    "lint:fix": "eslint --fix app.js",
+    "precommit": "npm run lint:fix",
+    "prepush": "npm run test",
+    "start": "node bin/www.js",
+    "dev": "nodemon index.js"
+  },
+  "engines": {
+    "node": "10.48.0"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~4.1.1",
+    "express": "~4.17.1",
+    "express-session": "~1.17.0",
+    "http-errors": "~1.7.3",
+    "jade": "~1.11.0",
+    "mongoose": "^5.8.0",
+    "morgan": "~1.9.1",
+    "passport": "~0.4.0",
+    "passport-local": "1.0.0",
+    "static-favicon": "~1.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.6.0",
+    "grunt-template-jasmine-requirejs": "^0.2.3",
+    "mocha": "^6.2.2",
+    "prettier": "1.19.1",
+    "protractor": "~5.4.2",
+    "socket.io": "^2.3.0",
+    "superagent": "^5.1.0",
+    "supertest": "^4.0.2"
+  }
+}

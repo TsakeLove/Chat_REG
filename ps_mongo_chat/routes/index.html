@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Demo Chat</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: rgb(212, 219, 226);
+            overflow-x: hidden;
+        }
+        #msg_form {
+            position: absolute;
+            margin-bottom: 0;
+            bottom: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+    <div id="wrap">
+        <div class="row">
+            <div class="col-md-12 panel">
+                <h1>Messages</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div id="messages"></div>
+            </div>
+        </div>
+        <div class="row well" id="msg_form">
+            <div class="col-md-12">
+                <div class="input-group">
+                    <form name="msg">
+                        <input type="text" id="inp" class="form-control input-lg" placeholder="Message..." />
+                        <span class="input-group-btn">
+                            <button class="btn btn-lg btn-success" type="button" id="btn" >Send!</button>
+                        </span>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const btn = document.getElementById('btn');
+        const message_input = document.getElementById('inp');
+        const user = user.name;
+        const message_container = document.getElementById('messages');
+        console.log("AAA");
+        const socket = io.connect('http://localhost:8000');
+        console.log("AAA");
+        socket.on('chat message', function (message) {
+            let display_message = `<div class ="panel well">
+                                   <h4>Message: user.username</h4>
+                                   <h5>${message.text}</h5>
+                               </div>`
+
+            // добавить результат на страницу
+            message_container.innerHTML += display_message;
+            console.log(message);
+        });
+        socket.emit('message', '{ text: message_input.value }' );
+        btn.onclick = function sendMessage(form) {
+            console.log('send message');
+            socket.emit('message', { text: message_input.value } );
+        }
+    </script>
+</body>
+</html>
